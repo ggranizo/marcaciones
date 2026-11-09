@@ -1,5 +1,6 @@
 """Interfaz Streamlit para los biométricos ML1 y ML2."""
 from io import BytesIO
+from pathlib import Path
 import logging
 
 import pandas as pd
@@ -8,11 +9,12 @@ import streamlit as st
 from procesamiento import procesar_excel
 
 st.set_page_config(page_title='Marcaciones · LEMAS', page_icon='🕒', layout='wide')
-st.title('Marcaciones biométricas')
+st.title('Marcaciones biométricas LEMAS')
 st.caption('LEMAS · Mucho Lote 1 y Mucho Lote 2')
 st.write('Carga el Excel del biométrico y descarga un CSV por fecha, con la primera y la última marcación de cada empleado.')
 
 with st.sidebar:
+    st.image(str(Path(__file__).resolve().parent / 'assets' / 'logolemas.png'), width='stretch')
     st.header('Configuración')
     sede = st.selectbox('Sede / formato del biométrico', ['ML1', 'ML2'])
     etiquetas = {
